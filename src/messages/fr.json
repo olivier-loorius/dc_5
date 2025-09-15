@@ -1,4 +1,23 @@
 {
   "hello": "Bonjour",
-  "contact": "Contact"
+  "contact": "Contact",
+  "nav": {
+    "search": "Rechercher…",
+    "favorites": "Favoris",
+    "cart": "Panier",
+    "account": "Compte",
+    "menu": "Menu",
+    "home": "Accueil",
+    "shop": "Boutique",
+    "categories": "Catégories",
+    "about": "À propos",
+    "new": "Nouveautés",
+    "best": "Best-sellers",
+    "categories_menu": "Catégories",
+    "lingerie": "Lingerie",
+    "accessories": "Accessoires",
+    "gifts": "Idées cadeaux",
+    "promotions": "Promotions",
+    "cancel": "Annuler"
+  }
 }

@@ -1,6 +1,11 @@
 {
   "hello": "Bonjour",
   "contact": "Contact",
+  "site": {
+    "title": "Boys & Toys",
+    "titleTemplate": "%s | Boys & Toys",
+    "description": "Boys & Toys - Boutique en ligne"
+  },
   "nav": {
     "search": "Rechercher…",
     "favorites": "Favoris",
@@ -18,6 +23,7 @@
     "accessories": "Accessoires",
     "gifts": "Idées cadeaux",
     "promotions": "Promotions",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "close": "Fermer"
   }
 }

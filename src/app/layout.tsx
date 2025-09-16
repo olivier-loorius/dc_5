@@ -18,8 +18,12 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Projet Premium",
-  description: "Typographies Antonio + Roboto",
+  title: { default: "Boys & Toys", template: "%s | Boys & Toys" },
+  icons: {
+    icon: [{ url: "/Logo.png", type: "image/png" }],
+    apple: [{ url: "/Logo.png", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

@@ -125,6 +125,24 @@
   }
 }
 
+@layer components {
+  .footer-link {
+    @apply text-white/75 hover:text-brand transition-colors;
+  }
+  .section-title {
+    @apply font-display font-semibold tracking-tight text-base md:text-lg text-brand;
+  }
+  .input-pill {
+    @apply flex h-10 items-center rounded-full border border-white/10 px-3 transition ring-brand focus-within:ring-1 focus-within:border-transparent;
+  }
+  .muted {
+    @apply text-white/60;
+  }
+  .icon-btn {
+    @apply inline-flex items-center justify-center size-8 rounded-full hover:text-brand hover:bg-white/5 focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-colors;
+  }
+}
+
 /* Hiérarchie typographique (Antonio + Roboto) */
 @layer base {
   html {

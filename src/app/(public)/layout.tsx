@@ -1,24 +1,79 @@
-import Navbar from "./navbar/Navbar";
-export default function PublicLayout({
+import Navbar from "@/components/navbar/Navbar";
+import ScrollShadow from "@/components/navbar/ScrollShadow";
+import Footer from "@/components/footer/Footer";
+import { getTranslations } from "next-intl/server";
+import QuickActions from "@/components/QuickActions";
+
+export default async function PublicLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const tFooter = await getTranslations("footer");
+  const tNav = await getTranslations("nav");
+
+  const menu = {
+    new: tNav("new"),
+    best: tNav("best"),
+    categories_menu: tNav("categories_menu"),
+    lingerie: tNav("lingerie"),
+    accessories: tNav("accessories"),
+    gifts: tNav("gifts"),
+    promotions: tNav("promotions"),
+  };
+
+  const ui = {
+    search: tNav("search"),
+    favorites: tNav("favorites"),
+    cart: tNav("cart"),
+    account: tNav("account"),
+    cancel: tNav("cancel"),
+    menu: "Menu",
+  } as const;
+
   return (
     <>
-      <Navbar />
-      <ScrollShadowScript />
+      <Navbar menu={menu} ui={ui} />
+      <ScrollShadow />
       {children}
+      <Footer
+        footer={{
+          sections: tFooter("sections"),
+          help: tFooter("help"),
+          legal: tFooter("legal"),
+          contact: tFooter("contact"),
+          about: tFooter("about"),
+          faq: tFooter("faq"),
+          phone_label: tFooter("phone_label"),
+          email_label: tFooter("email_label"),
+          terms: tFooter("terms"),
+          privacy: tFooter("privacy"),
+          tagline: tFooter("tagline"),
+          shop: tFooter("shop"),
+          newsletter: tFooter("newsletter"),
+          newsletter_placeholder: tFooter("newsletter_placeholder"),
+          newsletter_cta: tFooter("newsletter_cta"),
+          newsletter_privacy: tFooter("newsletter_privacy"),
+          follow_us: tFooter("follow_us"),
+          adults_only: tFooter("adults_only"),
+          secure_payment: tFooter("secure_payment"),
+          discreet_shipping: tFooter("discreet_shipping"),
+          returns: tFooter("returns"),
+          payments: tFooter("payments"),
+          legal_notice: tFooter("legal_notice"),
+          cookies: tFooter("cookies"),
+        }}
+        nav={{
+          new: tNav("new"),
+          best: tNav("best"),
+          categories: tNav("categories"),
+          lingerie: tNav("lingerie"),
+          accessories: tNav("accessories"),
+          gifts: tNav("gifts"),
+          promotions: tNav("promotions"),
+        }}
+      />
+      <QuickActions />
     </>
-  );
-}
-
-function ScrollShadowScript() {
-  return (
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `(() => { const h=document.getElementById('app-header'); if(!h) return; const onScroll=() => { h.dataset.scrolled = String(window.scrollY>8) }; onScroll(); window.addEventListener('scroll', onScroll, { passive: true }); })();`,
-      }}
-    />
   );
 }

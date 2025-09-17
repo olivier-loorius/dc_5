@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NEXT_DISABLE_TURBOPACK=1 NEXT_USE_TURBOPACK=0 DISABLE_TURBOPACK=true next dev",
+    "dev:webpack": "cross-env NEXT_DISABLE_TURBOPACK=1 NEXT_USE_TURBOPACK=0 DISABLE_TURBOPACK=true next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-brands-svg-icons": "^7.0.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "@fortawesome/react-fontawesome": "^3.0.2",
     "@prisma/client": "^6.16.1",
@@ -37,6 +39,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chokidar": "^4.0.3",
+    "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "jsdom": "^27.0.0",

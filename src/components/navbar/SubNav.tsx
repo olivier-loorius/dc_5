@@ -6,8 +6,6 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuIndicator,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
 export type SubNavItem = { label: string; href: string };

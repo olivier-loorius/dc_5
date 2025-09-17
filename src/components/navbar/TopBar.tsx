@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,17 +20,31 @@ type LogoProps = {
   text?: string;
 };
 
-export function TopBar({ logo = { text: "MonLogo" } }: { logo?: LogoProps }) {
+export function TopBar({
+  logo = { text: "MonLogo" },
+  ui,
+}: {
+  logo?: LogoProps;
+  ui: {
+    search: string;
+    favorites: string;
+    cart: string;
+    account: string;
+    cancel?: string;
+    menu: string;
+  };
+}) {
   return (
     <div className="container mx-auto flex h-20 sm:h-24 md:h-28 xl:h-32 items-center justify-between px-4">
       <Logo logo={logo} />
       <RightZone
         tKey={{
-          search: "nav.search",
-          favorites: "nav.favorites",
-          cart: "nav.cart",
-          account: "nav.account",
-          cancel: "nav.cancel",
+          search: ui.search,
+          favorites: ui.favorites,
+          cart: ui.cart,
+          account: ui.account,
+          cancel: ui.cancel ?? "Annuler",
+          menu: ui.menu,
         }}
       />
     </div>
@@ -71,27 +84,22 @@ function RightZone({
     cart: string;
     account: string;
     cancel?: string;
+    menu: string;
   };
 }) {
-  const t = useTranslations();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cartCount] = useState<number>(0);
   return (
     <div className="flex items-center gap-2 sm:gap-3">
-      {/* Desktop search */}
-      <SearchBar
-        placeholder={t(tKey.search) as string}
-        className="hidden md:flex"
-      />
+      <SearchBar placeholder={tKey.search} className="hidden md:flex" />
 
       <div className="flex items-center gap-1 sm:gap-2">
-        {/* Mobile search trigger */}
         <Button
           variant="ghost"
           size="icon"
           className="md:hidden"
-          aria-label={t(tKey.search) as string}
+          aria-label={tKey.search}
           onClick={() => setIsSearchOpen(true)}
         >
           <FontAwesomeIcon
@@ -100,12 +108,7 @@ function RightZone({
           />
         </Button>
 
-        <Button
-          asChild
-          variant="ghost"
-          size="icon"
-          aria-label={t(tKey.favorites) as string}
-        >
+        <Button asChild variant="ghost" size="icon" aria-label={tKey.favorites}>
           <Link href="/favoris">
             <FontAwesomeIcon
               icon={faHeart}
@@ -113,12 +116,7 @@ function RightZone({
             />
           </Link>
         </Button>
-        <Button
-          asChild
-          variant="ghost"
-          size="icon"
-          aria-label={t(tKey.cart) as string}
-        >
+        <Button asChild variant="ghost" size="icon" aria-label={tKey.cart}>
           <Link href="/panier" className="relative">
             <FontAwesomeIcon
               icon={faShoppingCart}
@@ -131,12 +129,7 @@ function RightZone({
             )}
           </Link>
         </Button>
-        <Button
-          asChild
-          variant="ghost"
-          size="icon"
-          aria-label={t(tKey.account) as string}
-        >
+        <Button asChild variant="ghost" size="icon" aria-label={tKey.account}>
           <Link href="/compte">
             <FontAwesomeIcon
               icon={faUser}
@@ -145,12 +138,11 @@ function RightZone({
           </Link>
         </Button>
 
-        {/* Mobile burger */}
         <Button
           variant="ghost"
           size="icon"
           className="md:hidden"
-          aria-label={t("nav.menu") as string}
+          aria-label={tKey.menu}
           onClick={() => setIsMenuOpen(true)}
         >
           <FontAwesomeIcon
@@ -162,8 +154,8 @@ function RightZone({
 
       {isSearchOpen && (
         <MobileSearchOverlay
-          placeholder={t(tKey.search) as string}
-          cancelLabel={t("nav.cancel") as string}
+          placeholder={tKey.search}
+          cancelLabel={tKey.cancel ?? "Annuler"}
           onClose={() => setIsSearchOpen(false)}
         />
       )}
@@ -262,7 +254,6 @@ function MobileSearchOverlay({
 }
 
 function MobileMenuOverlay({ onClose }: { onClose: () => void }) {
-  const t = useTranslations("nav");
   return (
     <div
       className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
@@ -273,13 +264,11 @@ function MobileMenuOverlay({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-6">
-          <span className="font-display text-xl text-brand">
-            {t("menu") as string}
-          </span>
+          <span className="font-display text-xl text-brand">Menu</span>
           <Button
             variant="ghost"
             size="icon"
-            aria-label={t("close") as string}
+            aria-label="Fermer"
             onClick={onClose}
           >
             <span className="text-3xl leading-none">×</span>
@@ -292,7 +281,7 @@ function MobileMenuOverlay({ onClose }: { onClose: () => void }) {
               onClick={onClose}
               className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
             >
-              {t("home") as string}
+              Accueil
             </Link>
           </li>
           <li>
@@ -301,64 +290,9 @@ function MobileMenuOverlay({ onClose }: { onClose: () => void }) {
               onClick={onClose}
               className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
             >
-              {t("new") as string}
+              Nouveautés
             </Link>
           </li>
-          <li>
-            <Link
-              href="/best-sellers"
-              onClick={onClose}
-              className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
-            >
-              {t("best") as string}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/categories"
-              onClick={onClose}
-              className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
-            >
-              {t("categories") as string}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/lingerie"
-              onClick={onClose}
-              className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
-            >
-              {t("lingerie") as string}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/accessoires"
-              onClick={onClose}
-              className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
-            >
-              {t("accessories") as string}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/idees-cadeaux"
-              onClick={onClose}
-              className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
-            >
-              {t("gifts") as string}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/promotions"
-              onClick={onClose}
-              className="block px-3 py-3 rounded-md relative transition-colors duration-200 hover:text-brand after:absolute after:left-3 after:right-3 after:bottom-1 after:h-px after:w-0 after:bg-[color:var(--brand)] after:transition-[width] after:duration-300 hover:after:w-[calc(100%-24px)]"
-            >
-              {t("promotions") as string}
-            </Link>
-          </li>
-          {/* Pas de doublons: les actions restent en icônes en haut */}
         </ul>
       </nav>
     </div>

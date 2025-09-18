@@ -125,12 +125,51 @@
   }
 }
 
+/* (retiré) masquage top */
+
 @layer components {
   .footer-link {
     @apply text-white/75 hover:text-brand transition-colors;
   }
   .section-title {
     @apply font-display font-semibold tracking-tight text-base md:text-lg text-brand;
+  }
+  .h2-like {
+    @apply font-display font-semibold leading-snug text-2xl md:text-3xl text-[oklch(var(--text-1))];
+  }
+  .body-like {
+    @apply font-sans leading-relaxed text-sm md:text-base text-[oklch(var(--text-2))];
+  }
+  .cta-btn {
+    @apply rounded-full border border-white/10 bg-transparent hover:bg-white/5 text-[oklch(var(--text-1))] focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-colors;
+  }
+  /* FAQ typographies unifiées */
+  .faq-q {
+    @apply font-display font-semibold leading-snug text-2xl md:text-3xl text-[oklch(var(--text-1))] py-2;
+  }
+  .faq-a {
+    @apply font-sans leading-relaxed text-sm md:text-base text-[oklch(var(--text-2))];
+  }
+  .faq-btn {
+    @apply rounded-full;
+  }
+  /* FAQ – styles simples, ciblés et uniformes (inline utilitaires, pas de @apply de classes custom) */
+  .faq [data-slot="accordion-trigger"] {
+    @apply font-display font-semibold leading-snug text-2xl md:text-3xl text-[oklch(var(--text-1))] underline decoration-[#e19a28]/60 underline-offset-4;
+  }
+  .faq [data-slot="accordion-trigger"] .accordion-trigger-label {
+    @apply font-display font-semibold leading-snug text-2xl md:text-3xl text-[oklch(var(--text-1))] underline decoration-[#e19a28]/60 underline-offset-4;
+  }
+  /* Forcer les descendants (texte wrapé) à hériter de la même typo/taille */
+  .faq [data-slot="accordion-trigger"] * {
+    @apply font-display font-semibold leading-snug text-2xl md:text-3xl text-[oklch(var(--text-1))] underline decoration-[#e19a28]/60 underline-offset-4;
+  }
+  /* Cas MDX: texte du trigger enveloppé dans un <p> */
+  .faq [data-slot="accordion-trigger"] p {
+    @apply font-display font-semibold leading-snug text-2xl md:text-3xl text-[oklch(var(--text-1))] underline decoration-[#e19a28]/60 underline-offset-4 m-0;
+  }
+  .faq [data-slot="accordion-content"] > div {
+    @apply font-sans leading-relaxed text-sm md:text-base text-[oklch(var(--text-2))];
   }
   .input-pill {
     @apply flex h-10 items-center rounded-full border border-white/10 px-3 transition ring-brand focus-within:ring-1 focus-within:border-transparent;
@@ -162,6 +201,9 @@
   }
   .cta {
     @apply font-display font-semibold uppercase tracking-wide text-sm md:text-base;
+  }
+  .cta-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-brand text-black px-4 py-2 md:px-5 md:py-2.5 transition-colors hover:brightness-110 focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none;
   }
 }
 

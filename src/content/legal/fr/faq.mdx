@@ -1,0 +1,147 @@
+export const metadata = { title: "FAQ" };
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+
+# Foire aux questions
+
+_Dernière mise à jour : 01/09/2025_
+
+_Les réponses ci‑dessous sont générales. Pour un conseil personnalisé et discret, contactez‑nous._
+
+<div className="faq">
+<Accordion type="single" collapsible>
+  <AccordionItem value="expedition">
+    <AccordionTrigger>Expédition discrète : à quoi ressemble le colis ?</AccordionTrigger>
+    <AccordionContent>
+      <ul>
+        <li>Emballage neutre, sans mentions sensibles ni logo.</li>
+        <li>Expéditeur affiché sous une raison sociale discrète.</li>
+        <li>Bon de livraison interne sans détail explicite des produits.</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+
+<AccordionItem value="delais">
+  <AccordionTrigger>Délais, options et suivi de livraison</AccordionTrigger>
+  <AccordionContent>
+    <p>Préparation en 24–48h ouvrées (hors périodes de forte activité).</p>
+    <ul>
+      <li>Standard : 2–4 jours ouvrés après expédition.</li>
+      <li>Express : 24–48h selon zone desservie.</li>
+      <li>Suivi en ligne via le lien transmis par email.</li>
+    </ul>
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="retours">
+  <AccordionTrigger>Retours, hygiène et rétractation</AccordionTrigger>
+  <AccordionContent>
+    <ul>
+      <li>
+        Droit de rétractation : 14 jours (produits non ouverts, non descellés).
+      </li>
+      <li>Pour l’hygiène, tout article ouvert/descellé ne peut être repris.</li>
+      <li>
+        Contactez‑nous avant retour pour obtenir l’adresse et l’aval du SAV.
+      </li>
+    </ul>
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="paiement">
+  <AccordionTrigger>
+    Paiement sécurisé (3‑D Secure) et discrétion bancaire
+  </AccordionTrigger>
+  <AccordionContent>
+    <ul>
+      <li>Transactions chiffrées et conformes PSD2 (3‑D Secure possible).</li>
+      <li>La désignation sur relevé est neutre (raison sociale discrète).</li>
+      <li>Aucune conservation des données complètes de carte chez nous.</li>
+    </ul>
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="tailles">
+  <AccordionTrigger>
+    Tailles, matériaux et lubrifiants compatibles
+  </AccordionTrigger>
+  <AccordionContent>
+    <ul>
+      <li>Silicone : privilégier lubrifiant à base d’eau.</li>
+      <li>ABS/TPR : vérifier la notice, éviter les solvants.</li>
+      <li>Consultez nos guides de tailles sur chaque fiche produit.</li>
+    </ul>
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="confidentialite">
+  <AccordionTrigger>Confidentialité de vos données</AccordionTrigger>
+  <AccordionContent>
+    <p>
+      Vos données sont utilisées uniquement pour traiter la commande et le SAV.
+    </p>
+    <ul>
+      <li>Pas de revente de données.</li>
+      <li>
+        Vous pouvez demander l’accès/suppression (voir Politique de
+        confidentialité).
+      </li>
+    </ul>
+    <p className="mt-2">
+      Pour vos préférences de cookies, utilisez l’icône Paramètres (⚙︎) en bas
+      à droite ou suivez ce lien :
+      <a href="/legal/confidentialite#cookies" className="ml-2 underline">
+        Gérer mes cookies
+      </a>
+      .
+    </p>
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="sav">
+  <AccordionTrigger>Service client et garanties</AccordionTrigger>
+  <AccordionContent>
+    <ul>
+      <li>Réponse sous 24h ouvrées (email prioritaire).</li>
+      <li>Garantie légale de conformité (2 ans) selon la loi.</li>
+      <li>Process SAV discret et efficace.</li>
+    </ul>
+    <div className="mt-2">
+      <Button
+        variant="ghost"
+        size="sm"
+        className="cta-btn cta px-4 py-1.5 text-xs md:text-sm rounded-full"
+      >
+        Nous contacter
+      </Button>
+    </div>
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="cadeau">
+  <AccordionTrigger>Emballage cadeau et message personnalisé</AccordionTrigger>
+  <AccordionContent>
+    <ul>
+      <li>Option emballage cadeau lors du paiement (si disponible).</li>
+      <li>Message discret, sans détail produit explicite.</li>
+    </ul>
+  </AccordionContent>
+</AccordionItem>
+
+  <AccordionItem value="international">
+    <AccordionTrigger>Livraison internationale et douanes</AccordionTrigger>
+    <AccordionContent>
+      <ul>
+        <li>Délais variables selon pays et transporteur.</li>
+        <li>Frais/taxes douanières éventuels à la charge du destinataire.</li>
+      </ul>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+</div>

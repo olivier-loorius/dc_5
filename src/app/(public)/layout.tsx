@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar/Navbar";
 import ScrollShadow from "@/components/navbar/ScrollShadow";
 import Footer from "@/components/footer/Footer";
+import TopOcclude from "@/components/navbar/TopOcclude";
 import { getTranslations } from "next-intl/server";
 import QuickActions from "@/components/QuickActions";
 
@@ -35,6 +36,7 @@ export default async function PublicLayout({
     <>
       <Navbar menu={menu} ui={ui} />
       <ScrollShadow />
+      <TopOcclude />
       {children}
       <Footer
         footer={{

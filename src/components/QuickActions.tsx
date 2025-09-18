@@ -47,9 +47,13 @@ export default function QuickActions() {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-end md:items-start justify-center p-3 md:p-6"
+          onClick={() => setIsSettingsOpen(false)}
         >
-          <div className="mx-auto mt-20 w-full max-w-md rounded-lg border border-white/10 bg-background/90 p-4 text-sm">
+          <div
+            className="w-full max-w-md md:mt-20 rounded-lg border border-white/10 bg-background/90 p-4 text-sm max-h-[85vh] overflow-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between mb-2">
               <span className="section-title">{t("settings")}</span>
               <Button
@@ -111,11 +115,6 @@ export default function QuickActions() {
               </div>
             </div>
           </div>
-          <button
-            aria-label={t("close") as string}
-            className="fixed inset-0 -z-10"
-            onClick={() => setIsSettingsOpen(false)}
-          />
         </div>
       )}
     </>

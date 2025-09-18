@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -114,7 +115,7 @@ export default function Footer({
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="footer-link">
+                <Link href="/legal/faq" className="footer-link">
                   {footer.faq}
                 </Link>
               </li>
@@ -137,17 +138,20 @@ export default function Footer({
             </summary>
             <ul className="mt-2 space-y-2 text-sm">
               <li>
-                <Link href="/cgu" className="footer-link">
+                <Link
+                  href="/legal/conditions-utilisation"
+                  className="footer-link"
+                >
                   {footer.terms}
                 </Link>
               </li>
               <li>
-                <Link href="/confidentialite" className="footer-link">
+                <Link href="/legal/confidentialite" className="footer-link">
                   {footer.privacy}
                 </Link>
               </li>
               <li>
-                <Link href="/mentions-legales" className="footer-link">
+                <Link href="/legal/mentions-legales" className="footer-link">
                   {footer.legal_notice}
                 </Link>
               </li>
@@ -161,7 +165,27 @@ export default function Footer({
         </div>
 
         <div className="md:hidden max-w-7xl mx-auto px-4 md:px-6 mt-3 space-y-3 text-sm">
-          <p>{footer.tagline}</p>
+          <p className="flex items-center gap-2">
+            <Image
+              src="/Logo.png"
+              alt="Boys & Toys"
+              width={20}
+              height={20}
+              className="inline-block rounded-sm select-none"
+            />
+            {(() => {
+              const tagline = footer.tagline || "";
+              const parts = tagline.split("—", 2);
+              const brand = (parts[0] || "").trim();
+              const rest = parts.length > 1 ? parts[1] : "";
+              return (
+                <>
+                  <span className="text-[#e19a28]">{brand}</span>
+                  {rest && <span> —{rest}</span>}
+                </>
+              );
+            })()}
+          </p>
           <form
             action="/newsletter"
             method="POST"
@@ -313,7 +337,7 @@ export default function Footer({
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="footer-link">
+                <Link href="/legal/faq" className="footer-link">
                   {footer.faq}
                 </Link>
               </li>
@@ -337,17 +361,20 @@ export default function Footer({
             <h2 className="sr-only">{footer.legal}</h2>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/cgu" className="footer-link">
+                <Link
+                  href="/legal/conditions-utilisation"
+                  className="footer-link"
+                >
                   {footer.terms}
                 </Link>
               </li>
               <li>
-                <Link href="/confidentialite" className="footer-link">
+                <Link href="/legal/confidentialite" className="footer-link">
                   {footer.privacy}
                 </Link>
               </li>
               <li>
-                <Link href="/mentions-legales" className="footer-link">
+                <Link href="/legal/mentions-legales" className="footer-link">
                   {footer.legal_notice}
                 </Link>
               </li>
@@ -360,7 +387,27 @@ export default function Footer({
           </nav>
 
           <div className="space-y-3 text-sm md:col-span-6 md:px-3">
-            <p>{footer.tagline}</p>
+            <p className="flex items-center gap-2">
+              <Image
+                src="/Logo.png"
+                alt="Boys & Toys"
+                width={20}
+                height={20}
+                className="inline-block rounded-sm select-none"
+              />
+              {(() => {
+                const tagline = footer.tagline || "";
+                const parts = tagline.split("—", 2);
+                const brand = (parts[0] || "").trim();
+                const rest = parts.length > 1 ? parts[1] : "";
+                return (
+                  <>
+                    <span className="text-[#e19a28]">{brand}</span>
+                    {rest && <span> —{rest}</span>}
+                  </>
+                );
+              })()}
+            </p>
             <form
               action="/newsletter"
               method="POST"

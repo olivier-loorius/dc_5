@@ -4,7 +4,7 @@
   "site": {
     "title": "Boys & Toys",
     "titleTemplate": "%s | Boys & Toys",
-    "description": "Boys & Toys - Boutique en ligne"
+    "description": "Boys & Toys -  Boutique en ligne"
   },
   "nav": {
     "search": "Rechercher…",
@@ -61,5 +61,14 @@
     "light": "Clair",
     "cookies_manage": "Gérer les préférences cookies",
     "scroll_top": "Revenir en haut"
+  },
+  "legal": {
+    "title": "Informations légales",
+    "subtitle": "Retrouvez nos informations contractuelles et notre politique de confidentialité.",
+    "mentions": "Mentions légales",
+    "terms": "Conditions d’utilisation",
+    "privacy": "Politique de confidentialité",
+    "faq": "FAQ",
+    "page": "Page"
   }
 }

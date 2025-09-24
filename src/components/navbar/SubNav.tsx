@@ -11,8 +11,8 @@ import {
 export type SubNavItem = { label: string; href: string };
 
 export function SubNav({ items = [] }: { items?: SubNavItem[] }) {
-  if (!items.length) return null;
   const pathname = usePathname();
+  if (!items.length) return null;
   return (
     <div className="border-t border-white/10 hidden md:block">
       <div className="container mx-auto px-2 md:px-4 py-2">

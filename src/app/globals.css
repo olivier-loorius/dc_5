@@ -238,6 +238,12 @@
   color: var(--fg-on-bg);
 }
 
+@media (max-width: 1024px) {
+  .app-bg {
+    background-attachment: scroll;
+  }
+}
+
 /* Utilitaires marque */
 .text-brand {
   color: var(--brand);

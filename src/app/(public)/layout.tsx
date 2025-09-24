@@ -4,6 +4,7 @@ import Footer from "@/components/footer/Footer";
 import TopOcclude from "@/components/navbar/TopOcclude";
 import { getTranslations } from "next-intl/server";
 import QuickActions from "@/components/QuickActions";
+import { ToasterClient } from "@/components/ui/ToasterClient";
 
 export default async function PublicLayout({
   children,
@@ -76,6 +77,7 @@ export default async function PublicLayout({
         }}
       />
       <QuickActions />
+      <ToasterClient />
     </>
   );
 }

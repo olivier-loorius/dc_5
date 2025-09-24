@@ -1,10 +1,18 @@
-"use client";
 import { NextIntlClientProvider } from "next-intl";
-import fr from "../messages/fr.json";
+import { getMessages, getLocale } from "next-intl/server";
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default async function Providers({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [messages, locale] = await Promise.all([getMessages(), getLocale()]);
   return (
-    <NextIntlClientProvider locale="fr" timeZone="Europe/Paris" messages={fr}>
+    <NextIntlClientProvider
+      locale={locale}
+      timeZone="Europe/Paris"
+      messages={messages}
+    >
       {children}
     </NextIntlClientProvider>
   );

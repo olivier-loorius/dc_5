@@ -16,9 +16,9 @@ export default function ScrollShadow() {
     const rafApply = () => requestAnimationFrame(apply);
     // Initial sync (après paint et après éventuel chargement de polices)
     rafApply();
-    // @ts-expect-error: fonts API peut ne pas être dispo partout
+    // @ts-expect-error - document.fonts peut être indisponible selon l'environnement
     if (document.fonts?.ready) {
-      // @ts-expect-error
+      // @ts-expect-error - typage lib DOM incomplet pour .ready
       document.fonts.ready.then(rafApply).catch(() => {});
     }
     const onScroll = () => rafApply();

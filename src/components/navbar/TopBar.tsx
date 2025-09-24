@@ -130,7 +130,7 @@ function RightZone({
           </Link>
         </Button>
         <Button asChild variant="ghost" size="icon" aria-label={tKey.account}>
-          <Link href="/compte">
+          <Link href="/login">
             <FontAwesomeIcon
               icon={faUser}
               className="h-8 w-8 sm:h-7 sm:w-7 md:h-6 md:w-6 text-[color:var(--brand)]"

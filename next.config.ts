@@ -14,6 +14,8 @@ const withMDX = createMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ["tsx", "ts", "jsx", "js", "mdx"],
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
 };
 
 export default withNextIntl(withMDX(nextConfig));

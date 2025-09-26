@@ -11,7 +11,7 @@ export async function doSignUp(form: FormData) {
     passwordConfirm: form.get("passwordConfirm"),
   });
 
-  const sb = supabaseServer();
+  const sb = await supabaseServer();
   const { error } = await sb.auth.signUp({
     email: data.email,
     password: data.password,
@@ -42,19 +42,43 @@ export async function doSignUp(form: FormData) {
 }
 
 export async function doSignIn(form: FormData) {
-  const data = signInSchema.parse({
-    email: form.get("email"),
-    password: form.get("password"),
-  });
+  console.log("🔐 doSignIn appelé");
 
-  const sb = supabaseServer();
-  const { error } = await sb.auth.signInWithPassword({
-    email: data.email,
-    password: data.password,
-  });
-  if (error) {
-    throw new Error(error.message);
+  try {
+    const rawEmail = form.get("email");
+    const rawPassword = form.get("password");
+
+    console.log("📧 Données reçues:", {
+      email: rawEmail,
+      password: rawPassword ? "***" : "VIDE",
+    });
+
+    const data = signInSchema.parse({
+      email: rawEmail,
+      password: rawPassword,
+    });
+
+    console.log("✅ Validation OK");
+
+    const sb = await supabaseServer();
+    console.log("🔗 Supabase client créé");
+
+    const { error, data: authData } = await sb.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
+
+    if (error) {
+      console.error("❌ Erreur Supabase:", error);
+      throw new Error(error.message);
+    }
+
+    console.log("✅ Connexion réussie:", authData.user?.email);
+    console.log("🏠 Redirection vers /");
+
+    redirect("/");
+  } catch (error) {
+    console.error("💥 Erreur doSignIn:", error);
+    throw error;
   }
-
-  redirect("/");
 }

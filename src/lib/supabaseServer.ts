@@ -9,8 +9,8 @@ function firstEnv(names: string[]): string | undefined {
   return undefined;
 }
 
-export function supabaseServer() {
-  const cookieStore = cookies();
+export async function supabaseServer() {
+  const cookieStore = await cookies();
 
   // Supporte plusieurs conventions de variables d'environnement
   const url = firstEnv([
@@ -32,6 +32,7 @@ export function supabaseServer() {
 
   return createServerClient(url, anonKey, {
     cookies: {
+      getAll: () => cookieStore.getAll(),
       get: (name) => cookieStore.get(name)?.value,
       set: (name, value, options) =>
         cookieStore.set({ name, value, ...options }),

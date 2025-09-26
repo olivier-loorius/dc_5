@@ -1,0 +1,35 @@
+# Configuration Cursor pour optimiser les performances et réduire la consommation mémoire
+
+# Désactiver l'indexation lourde
+indexing.enabled: false
+typescript.preferences.includePackageJsonAutoImports: "off"
+typescript.suggest.autoImports: false
+typescript.validate.enable: false
+
+# Réduire les features lourdes
+editor.minimap.enabled: false
+editor.bracketPairColorization.enabled: false
+editor.guides.indentation: false
+editor.renderWhitespace: "none"
+editor.rulers: []
+
+# Optimiser l'IntelliSense 
+typescript.disableAutomaticTypeAcquisition: true
+typescript.preferences.includePackageJsonAutoImports: "off"
+javascript.preferences.includePackageJsonAutoImports: "off"
+
+# Limiter les extensions
+extensions.autoUpdate: false
+extensions.autoCheckUpdates: false
+
+# Optimiser les performances générales
+files.watcherExclude: {
+  "**/.git/objects/**": true,
+  "**/.git/subtree-cache/**": true,
+  "**/node_modules/**": true,
+  "**/.next/**": true,
+  "**/.cache/**": true,
+  "**/dist/**": true,
+  "**/build/**": true
+}
+

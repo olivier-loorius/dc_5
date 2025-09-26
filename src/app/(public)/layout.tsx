@@ -31,6 +31,12 @@ export default async function PublicLayout({
     account: tNav("account"),
     cancel: tNav("cancel"),
     menu: "Menu",
+    login: "Se connecter",
+    logout: "Se déconnecter",
+    profile: "Profil",
+    orders: "Commandes",
+    settings: "Paramètres",
+    privacy: "Confidentialité",
   } as const;
 
   return (

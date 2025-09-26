@@ -27,6 +27,7 @@ export default async function Page() {
               autoComplete="email"
               className="peer bg-input/30 border-input text-foreground placeholder:opacity-60 rounded-md border px-3 py-2 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 invalid:border-destructive invalid:ring-destructive/20"
               placeholder={t("email")}
+              defaultValue=""
             />
             <p className="hidden peer-invalid:block text-xs text-destructive">
               {t("invalidEmail")}
@@ -43,6 +44,7 @@ export default async function Page() {
               autoComplete="current-password"
               placeholder={t("password")}
               invalidHint={t("required")}
+              value=""
             />
           </div>
           <Button type="submit" className="w-full">

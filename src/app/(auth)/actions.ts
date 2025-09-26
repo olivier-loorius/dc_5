@@ -10,7 +10,7 @@ export async function doSignUp(form: FormData) {
     passwordConfirm: form.get("passwordConfirm"),
   });
 
-  const sb = supabaseServer();
+  const sb = await supabaseServer();
   const { error } = await sb.auth.signUp({
     email: data.email,
     password: data.password,
@@ -28,7 +28,7 @@ export async function doSignIn(form: FormData) {
     password: form.get("password"),
   });
 
-  const sb = supabaseServer();
+  const sb = await supabaseServer();
   const { error } = await sb.auth.signInWithPassword({
     email: data.email,
     password: data.password,
@@ -39,4 +39,3 @@ export async function doSignIn(form: FormData) {
 
   redirect("/");
 }
-

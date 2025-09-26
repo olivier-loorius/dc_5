@@ -11,6 +11,7 @@ import {
   faSearch,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
+import { UserAuth } from "./UserAuth";
 
 type LogoProps = {
   src?: string;
@@ -32,6 +33,12 @@ export function TopBar({
     account: string;
     cancel?: string;
     menu: string;
+    login?: string;
+    logout?: string;
+    profile?: string;
+    orders?: string;
+    settings?: string;
+    privacy?: string;
   };
 }) {
   return (
@@ -45,6 +52,12 @@ export function TopBar({
           account: ui.account,
           cancel: ui.cancel ?? "Annuler",
           menu: ui.menu,
+          login: ui.login || "Se connecter",
+          logout: ui.logout || "Se déconnecter",
+          profile: ui.profile || "Profil",
+          orders: ui.orders || "Commandes",
+          settings: ui.settings || "Paramètres",
+          privacy: ui.privacy || "Confidentialité",
         }}
       />
     </div>
@@ -85,6 +98,12 @@ function RightZone({
     account: string;
     cancel?: string;
     menu: string;
+    login: string;
+    logout: string;
+    profile: string;
+    orders: string;
+    settings: string;
+    privacy: string;
   };
 }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -129,14 +148,18 @@ function RightZone({
             )}
           </Link>
         </Button>
-        <Button asChild variant="ghost" size="icon" aria-label={tKey.account}>
-          <Link href="/login">
-            <FontAwesomeIcon
-              icon={faUser}
-              className="h-8 w-8 sm:h-7 sm:w-7 md:h-6 md:w-6 text-[color:var(--brand)]"
-            />
-          </Link>
-        </Button>
+        <UserAuth
+          tKey={{
+            account: tKey.account,
+            login: tKey.login,
+            logout: tKey.logout,
+            profile: tKey.profile,
+            orders: tKey.orders,
+            favorites: tKey.favorites,
+            settings: tKey.settings,
+            privacy: tKey.privacy,
+          }}
+        />
 
         <Button
           variant="ghost"

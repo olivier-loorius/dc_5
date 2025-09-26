@@ -38,7 +38,7 @@ export function PasswordField({
           required={required}
           autoComplete={autoComplete}
           placeholder={placeholder}
-          value={value}
+          defaultValue={value || ""}
           onChange={onChange}
           className="peer bg-input/30 border-input text-foreground placeholder:opacity-60 rounded-md border pl-10 pr-10 py-2 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 invalid:border-destructive invalid:ring-destructive/20 w-full"
         />

@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "dev:webpack": "next dev",
+    "dev": "node src/scripts/dev-clean.js",
+    "dev:direct": "cross-env NODE_OPTIONS=--max-old-space-size=4096 NEXT_TELEMETRY_DISABLED=1 next dev",
+    "dev:memory": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192 --gc-interval=50\" NEXT_TELEMETRY_DISABLED=1 next dev",
+    "dev:minimal": "cross-env NODE_OPTIONS=--max-old-space-size=2048 NEXT_TELEMETRY_DISABLED=1 next dev",
+    "dev:windows": "set NODE_OPTIONS=--max-old-space-size=4096 && set NEXT_TELEMETRY_DISABLED=1 && next dev",
+    "clean:start": "src/scripts/clean-start.bat",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "memory:clear": "node src/scripts/optimize-memory.js",
+    "memory:monitor": "node src/scripts/memory-monitor.js --monitor",
+    "emergency": "node src/scripts/emergency-fix.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.1",

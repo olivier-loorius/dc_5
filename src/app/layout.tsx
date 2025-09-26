@@ -3,6 +3,13 @@ import { Antonio, Roboto } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 
+// Configuration FontAwesome pour éviter les fuites mémoire
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "@/lib/icons"; // Charge la bibliothèque d'icônes optimisée
+
+config.autoAddCss = false;
+
 const antonio = Antonio({
   subsets: ["latin"],
   weight: ["300", "400", "600", "700"],

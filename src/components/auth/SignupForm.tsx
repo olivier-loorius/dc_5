@@ -54,7 +54,7 @@ export function SignupForm() {
               required
               autoComplete="email"
               className="peer bg-input/30 border-input text-foreground placeholder:opacity-60 rounded-md border pl-10 pr-3 py-2 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 invalid:border-destructive invalid:ring-destructive/20 w-full"
-              placeholder="ex: jean.dupont@email.fr"
+              placeholder="Votre adresse email"
             />
           </div>
           <p className="hidden peer-invalid:block text-xs text-destructive">

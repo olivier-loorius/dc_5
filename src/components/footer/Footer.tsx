@@ -125,8 +125,8 @@ export default function Footer({
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@example.com" className="footer-link">
-                  {footer.email_label}: contact@example.com
+                <a href="mailto:contact@boysandtoys.fr" className="footer-link">
+                  {footer.email_label}: contact@boysandtoys.fr
                 </a>
               </li>
             </ul>
@@ -347,8 +347,8 @@ export default function Footer({
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@example.com" className="footer-link">
-                  {footer.email_label}: contact@example.com
+                <a href="mailto:contact@boysandtoys.fr" className="footer-link">
+                  {footer.email_label}: contact@boysandtoys.fr
                 </a>
               </li>
             </ul>

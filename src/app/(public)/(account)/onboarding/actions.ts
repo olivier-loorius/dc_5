@@ -36,7 +36,7 @@ export async function saveProfile(form: FormData) {
     phone: parsed.phone ?? null,
   } as const;
 
-  const sb = supabaseServer();
+  const sb = await supabaseServer();
   const {
     data: { user },
   } = await sb.auth.getUser();
@@ -61,7 +61,7 @@ export async function saveAddress(form: FormData) {
     phone: form.get("phone"),
   });
 
-  const sb = supabaseServer();
+  const sb = await supabaseServer();
   const {
     data: { user },
   } = await sb.auth.getUser();
